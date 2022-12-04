@@ -4,15 +4,22 @@ import styled from 'styled-components';
 
 const DefaultButton = styled.button`
   border: 0px;
-  padding: 0.5em 1em;
+  padding: 0.33em 1em;
   border: 1px solid ${props => props.primary ? props.backgroundColor : '#DDD'};
   border-radius: 4px;
   background: ${props => props.primary ? props.backgroundColor : '#DDD'};
   cursor: pointer;
+  font-size: ${props => props.size ? sizes[props.size] : sizes.medium};
   &:hover {
     border: 1px solid rgba(0,0,0,0.1);
   }
 `;
+
+const sizes = {
+  small: '0.8rem',
+  medium: '1rem',
+  large: '1.2rem',
+};
 
 /**
  * Primary UI component for user interaction
