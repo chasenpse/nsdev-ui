@@ -20,10 +20,6 @@ const sizes = {
   medium: '1rem',
   large: '1.2rem',
 };
-
-/**
- * Primary UI component for user interaction
- */
 export const Button = ({ label, ...props }) => (
   <DefaultButton type="button" {...props}>
     {label}
@@ -31,13 +27,7 @@ export const Button = ({ label, ...props }) => (
 );
 
 Button.propTypes = {
-  /**
-   * Is this the principal call to action on the page?
-   */
   primary: PropTypes.bool,
-  /**
-   * What background color to use
-   */
   backgroundColor: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   label: PropTypes.string,
