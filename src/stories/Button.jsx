@@ -1,23 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './button.css';
+import styled from 'styled-components';
+
+const DefaultButton = styled.button`
+  border: 0px;
+  padding: 0.5em 1em;
+  border: 1px solid ${props => props.primary ? props.backgroundColor : '#DDD'};
+  border-radius: 4px;
+  background: ${props => props.primary ? props.backgroundColor : '#DDD'};
+  cursor: pointer;
+  &:hover {
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+`;
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={backgroundColor && { backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
+export const Button = ({ label, ...props }) => (
+  <DefaultButton type="button" {...props}>
+    {label}
+  </DefaultButton>
+);
 
 Button.propTypes = {
   /**
@@ -35,7 +39,7 @@ Button.propTypes = {
   /**
    * Button contents
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   /**
    * Optional click handler
    */
@@ -43,8 +47,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  backgroundColor: null,
   primary: false,
+  backgroundColor: '#F5D17B',
   size: 'medium',
   onClick: undefined,
 };
